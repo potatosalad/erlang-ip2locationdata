@@ -1,0 +1,33 @@
+%% -*- mode: erlang; tab-width: 4; indent-tabs-mode: 1; st-rulers: [70] -*-
+%% vim: ts=4 sw=4 ft=erlang noet
+{application, ip2locationdata, [
+	{description, "Periodically fetches the free IP2Location databases"},
+	{vsn, "0.0.1"},
+	{id, "git"},
+	{mod, {'ip2locationdata_app', []}},
+	{registered, []},
+	{applications, [
+		kernel,
+		stdlib,
+		crypto,
+		asn1,
+		public_key,
+		ssl,
+		inets
+	]},
+	{modules, []},
+	{maintainers, ["Andrew Bennett"]},
+	{licenses, ["Mozilla Public License Version 2.0"]},
+	{links, [{"Github", "https://github.com/potatosalad/erlang-ip2locationdata"}]},
+	{env, [
+		{autoupdate, 86400}, % 24 hours
+		{credentials, undefined}, % required
+		{endpoints, #{
+			download => "https://www.ip2location.com/download",
+			info => "https://www.ip2location.com/download-info"
+		}},
+		{keep_releases, 2},
+		{logger, false},
+		{packages, []}
+	]}
+]}.
