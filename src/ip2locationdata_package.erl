@@ -105,7 +105,7 @@ handle_call(_Request, _From, State) ->
 	{reply, ignore, State}.
 
 %% @private
-handle_cast(config_change, State) ->
+handle_cast(config_change, State=#state{name=idle}) ->
 	{noreply, start_timer(State, 0)};
 handle_cast(_Request, State) ->
 	{noreply, State}.
@@ -232,9 +232,9 @@ is_release_outdated(State=#state{id=ID, release=OldRelease}, _Releases) ->
 	} = package_resolve(State),
 	InfoURL = binary:bin_to_list(iolist_to_binary([
 		TemplateURL,
-		$?, "email=", http_uri:encode(Login),
-		$&, "password=", http_uri:encode(Password),
-		$&, "productcode=", http_uri:encode(ProductCode)
+		$?, "email=", http_uri:encode(to_char_list(Login)),
+		$&, "password=", http_uri:encode(to_char_list(Password)),
+		$&, "productcode=", http_uri:encode(to_char_list(ProductCode))
 	])),
 	case httpc:request(get, {InfoURL, []}, [], [{body_format, binary}]) of
 		{ok, {{_, 200, _}, _, Body}} ->
@@ -431,9 +431,9 @@ request_release(State, DataDir, Metadata) ->
 	} = package_resolve(State),
 	DownloadURL = binary:bin_to_list(iolist_to_binary([
 		TemplateURL,
-		$?, "login=", http_uri:encode(Login),
-		$&, "password=", http_uri:encode(Password),
-		$&, "productcode=", http_uri:encode(ProductCode)
+		$?, "login=", http_uri:encode(to_char_list(Login)),
+		$&, "password=", http_uri:encode(to_char_list(Password)),
+		$&, "productcode=", http_uri:encode(to_char_list(ProductCode))
 	])),
 	PackageDir = get_package_directory(State, DataDir),
 	Prefix = iolist_to_binary(get_next_release_prefix()),

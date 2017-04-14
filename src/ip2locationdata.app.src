@@ -2,7 +2,7 @@
 %% vim: ts=4 sw=4 ft=erlang noet
 {application, ip2locationdata, [
 	{description, "Periodically fetches the free IP2Location databases"},
-	{vsn, "0.0.2"},
+	{vsn, "0.0.3"},
 	{id, "git"},
 	{mod, {'ip2locationdata_app', []}},
 	{registered, []},

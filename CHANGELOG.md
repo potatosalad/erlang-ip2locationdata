@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.3 (2017-04-14)
+
+* Fixes
+  * Regression fix related to configuration changes.
+
 ## 0.0.2 (2017-04-14)
 
 * Fixes
