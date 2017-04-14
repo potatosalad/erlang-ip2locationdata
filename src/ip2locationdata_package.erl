@@ -242,6 +242,7 @@ is_release_outdated(State=#state{id=ID, release=OldRelease}, _Releases) ->
 				[<<"OK">>, ExpireAt, Version, RawSize, _] ->
 					case is_release_version(OldRelease, Version) of
 						true ->
+							ok = ip2locationdata_event:announce(ID, OldRelease#release.package),
 							{false, State};
 						false ->
 							Size = binary_to_integer(RawSize),
@@ -356,12 +357,10 @@ read_archive_package(PackageDir, Release=#release{prefix=Prefix, archive=Archive
 		{Pid, Result} ->
 			ok = receive
 				{'DOWN', MonitorRef, process, Pid, _Info} ->
-					io:format("process died after work: ~p~n", [_Info]),
 					ok
 			end,
 			{ok, Result};
 		{'DOWN', MonitorRef, process, Pid, _Info} ->
-			io:format("process died unexpectedly: ~p~n", [_Info]),
 			error
 	end,
 	case Res0 of

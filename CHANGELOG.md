@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.2 (2017-04-14)
+
+* Fixes
+  * Remove leftover logging lines.
+  * Announce package every time configuration changes.
+
 ## 0.0.1 (2017-04-14)
 
 * Initial Release
