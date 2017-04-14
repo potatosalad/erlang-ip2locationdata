@@ -311,6 +311,11 @@ read_uint128(H, StartPos) ->
 	read_uint(H, StartPos, 16).
 
 %% @private
+round(Number, Precision) ->
+	P = math:pow(10, Precision),
+	round(Number * P) / P.
+
+%% @private
 searchtree(_H, _Ipnum, _Dbtype, Low, High, _BaseAddr, _Colsize, _Iptype) when Low > High ->
 	false;
 searchtree(H, Ipnum, Dbtype, Low, High, BaseAddr, Colsize, Iptype=ipv4) ->

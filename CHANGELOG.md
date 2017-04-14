@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.5 (2017-04-14)
+
+* Fixes
+  * Broken `round` function.
+
 ## 0.0.4 (2017-04-14)
 
 * Fixes
