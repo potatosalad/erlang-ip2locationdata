@@ -158,7 +158,7 @@ read_column_float(H, Dbtype, Rowoffset, Column) ->
 		{ok, Colpos} ->
 			Coloffset = (Colpos - 1) bsl 2,
 			X0 = read_float(H, Rowoffset + Coloffset),
-			round(X0);
+			round(X0, 6);
 		error ->
 			error
 	end.

@@ -17,7 +17,7 @@ Add `ip2locationdata` to your project's dependencies in `mix.exs`
 ```elixir
 defp deps do
   [
-    {:ip2locationdata, "~> 0.0.3"}
+    {:ip2locationdata, "~> 0.0.4"}
   ]
 end
 ```

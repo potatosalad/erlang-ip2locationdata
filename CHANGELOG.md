@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.4 (2017-04-14)
+
+* Fixes
+  * Round floats to 6 precision.
+
 ## 0.0.3 (2017-04-14)
 
 * Fixes
